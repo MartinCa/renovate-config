@@ -3,7 +3,8 @@
   "extends": [
     "config:recommended",
     ":disableRateLimiting",
-    ":enableVulnerabilityAlerts"
+    ":enableVulnerabilityAlerts",
+    "helpers:pinGitHubActionDigests"
   ],
   "assignees": ["MartinCa"],
   "assignAutomerge": true,
