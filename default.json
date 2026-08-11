@@ -1,10 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
+    "config:best-practices",
     ":disableRateLimiting",
     ":enableVulnerabilityAlerts",
-    "helpers:pinGitHubActionDigests"
+    ":automergeTesters",
+    ":automergeLinters",
+    ":semanticCommits"
   ],
   "assignees": ["MartinCa"],
   "assignAutomerge": true,
