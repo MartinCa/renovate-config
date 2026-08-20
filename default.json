@@ -10,6 +10,6 @@
   ],
   "assignees": ["MartinCa"],
   "assignAutomerge": true,
-  "minimumReleaseAge": "4 days",
+  "minimumReleaseAge": "3 days",
   "minimumReleaseAgeBehaviour": "timestamp-optional"
 }
