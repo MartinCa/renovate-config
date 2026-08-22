@@ -11,5 +11,14 @@
   "assignees": ["MartinCa"],
   "assignAutomerge": true,
   "minimumReleaseAge": "3 days",
-  "minimumReleaseAgeBehaviour": "timestamp-optional"
+  "minimumReleaseAgeBehaviour": "timestamp-optional",
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "digest",
+        "pinDigests"
+      ],
+      "automerge": true
+    }
+  ]
 }
