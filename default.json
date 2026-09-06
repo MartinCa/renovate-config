@@ -20,5 +20,38 @@
       ],
       "automerge": true
     }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Tool versions pinned as *_VERSION env vars in workflows, annotated with a `# renovate:` comment on the preceding line.",
+      "managerFilePatterns": [
+        "/^\\.github/workflows/.+\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?\\s+[A-Z0-9_]+_VERSION\\s*:\\s*[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
+      ]
+    },
+    {
+      "customType": "regex",
+      "description": "Tool versions pinned as *_VERSION env vars in compose files, annotated with a `# renovate:` comment.",
+      "managerFilePatterns": [
+        "/(^|/)(docker-)?compose\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?\\s+-\\s+[A-Z0-9_]+_VERSION\\s*=\\s*[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
+      ]
+    },
+    {
+      "customType": "regex",
+      "description": "Tool versions pinned as *_VERSION ARGs in Dockerfiles, annotated with a `# renovate:` comment.",
+      "managerFilePatterns": [
+        "/(^|/)Dockerfile$/",
+        "/(^|/)Dockerfile\\.[^/]+$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?\\s+ARG\\s+[A-Z0-9_]+_VERSION=[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
+      ]
+    }
   ]
 }
