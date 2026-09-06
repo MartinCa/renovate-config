@@ -1,0 +1,9 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "./default",
+    "github>MartinCa/frontend-kit:renovate-frontend",
+    ":automergeMinor",
+    ":automergeTypes"
+  ]
+}
