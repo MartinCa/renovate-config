@@ -63,6 +63,7 @@
       "matchStrings": [
         "# renovate: datasource=git-refs depName=(?<depName>[^\\s]+?) branch=(?<currentValue>[^\\s]+?)\\s+ARG\\s+[A-Z0-9_]+_COMMIT=[\"']?(?<currentDigest>[a-f0-9]{7,40})[\"']?"
       ],
+      "datasourceTemplate": "git-refs",
       "versioningTemplate": "git"
     }
   ]
