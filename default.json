@@ -52,6 +52,18 @@
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?\\s+ARG\\s+[A-Z0-9_]+_VERSION=[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
       ]
+    },
+    {
+      "customType": "regex",
+      "description": "Git commit SHAs pinned as *_COMMIT ARGs in Dockerfiles, tracking a source repo's branch via git-refs.",
+      "managerFilePatterns": [
+        "/(^|/)Dockerfile$/",
+        "/(^|/)Dockerfile\\.[^/]+$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=git-refs depName=(?<depName>[^\\s]+?) branch=(?<currentValue>[^\\s]+?)\\s+ARG\\s+[A-Z0-9_]+_COMMIT=[\"']?(?<currentDigest>[a-f0-9]{7,40})[\"']?"
+      ],
+      "versioningTemplate": "git"
     }
   ]
 }
