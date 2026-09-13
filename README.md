@@ -15,6 +15,27 @@ add both to the project's `extends` array:
 }
 ```
 
+## Lefthook config ref auto-bumping
+
+Repos that consume [MartinCa/lefthook-configs](https://github.com/MartinCa/lefthook-configs)
+as a `remotes:` entry in their `lefthook.yml` can extend this preset to have
+Renovate bump the pinned `ref:` tag:
+
+```json
+{
+  "extends": ["github>MartinCa/renovate-config:lefthook"]
+}
+```
+
+The preset adds a `custom.regex` manager watching `lefthook.yml` (and
+`lefthook.yaml`) for `ref: vX.Y.Z` pins pointing at
+`MartinCa/lefthook-configs` and bumps them to the latest GitHub release tag.
+
+> Note: preset schemas are validated on the Renovate dashboard itself — this
+> repo's CI only checks that all JSON parses, so the regex manager itself is
+> not exercised by CI. Test a change by running a Renovate dry run
+> (`--dry-run`) against a consumer repo.
+
 ## Development
 
 Local commits are guarded by `lefthook`, consuming the shared
