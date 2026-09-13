@@ -6,7 +6,8 @@
     ":enableVulnerabilityAlerts",
     ":automergeTesters",
     ":automergeLinters",
-    ":semanticCommits"
+    ":semanticCommits",
+    "./lefthook"
   ],
   "assignees": [
     "MartinCa"

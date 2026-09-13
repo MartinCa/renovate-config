@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Bump MartinCa/lefthook-configs ref pins (scoped to its remotes git_url block) in lefthook.yml",
+      "managerFilePatterns": [
+        "/(^|/)lefthook\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "(?:\\r?\\n[ \\t]*-[ \\t]+)git_url:[\\t ]*[\"']?[^\"'\\r\\n]*MartinCa/lefthook-configs[^\"'\\r\\n]*[\"']?[\\t ]*(?:#.*)?\\s+ref:[\\t ]*[\"']?(?<currentValue>v\\d+\\.\\d+\\.\\d+)(?:\\s|[\"']|#|$)"
+      ],
+      "depNameTemplate": "MartinCa/lefthook-configs",
+      "datasourceTemplate": "github-releases"
+    }
+  ]
+}
