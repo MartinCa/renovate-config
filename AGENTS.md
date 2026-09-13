@@ -6,7 +6,7 @@ Guidance for AI coding agents (and humans) working in this repository.
 
 Local hooks run through `lefthook`, consuming the shared
 [MartinCa/lefthook-configs](https://github.com/MartinCa/lefthook-configs)
-fragments pinned at `v2.0.1` in `lefthook.yml` (a thin `remotes:` config):
+fragments pinned at `v2.1.0` in `lefthook.yml` (a thin `remotes:` config):
 `lefthook-shared.yml` (secret scan + workflow audit), `langs/json.yml`
 (`check-json`), and `commit-msg.yml`.
 
@@ -18,7 +18,7 @@ This is a non-JS repo: there is no package-manager `prepare` hook, so human
 contributors install the standalone lefthook binary and run `lefthook install`
 once per clone. The official installer (`curl -fsSL https://get.lefthook.io/install.sh | bash -s 2.1.12`)
 or the pinned GitHub release binary (`lefthook_2.1.12_Linux_x86_64` from
-evilmartians/lefthook's releases) both work. `v2.0.1` is the current pinned
+evilmartians/lefthook's releases) both work. `v2.1.0` is the current pinned
 lefthook-configs ref (see `lefthook.yml`).
 
 - **pre-commit** — `check-json` verifies staged JSON is jq-canonical
