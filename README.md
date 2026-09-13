@@ -28,8 +28,23 @@ Renovate bump the pinned `ref:` tag:
 ```
 
 The preset adds a `custom.regex` manager watching `lefthook.yml` (and
-`lefthook.yaml`) for `ref: vX.Y.Z` pins pointing at
-`MartinCa/lefthook-configs` and bumps them to the latest GitHub release tag.
+`lefthook.yaml`). It only matches a `ref: vX.Y.Z` pin that sits directly
+under a `- git_url: ...MartinCa/lefthook-configs` `remotes:` entry, so a
+ref belonging to an unrelated remote in the same file is left alone. The
+version must be a clean `vX.Y.Z` release tag — `v1.2.3-extra` style
+suffixes do not match.
+
+Renovate's regex manager matches whole file contents. The replacement
+rewrites only the matched `git_url:`/`ref:` block (swapping just the
+version), so other `remotes:` entries and any comments are preserved
+verbatim.
+
+> Note: the matcher is context-based, not schema-based: any `ref: vX.Y.Z`
+> line directly following such a `MartinCa/lefthook-configs` `git_url:` line
+> is treated as the pin to bump, in any `lefthook.{yml,yaml}` file — Renovate
+> does not verify with lefthook that the block is a real `remotes:` entry.
+> Keep `ref:` immediately after `git_url:` inside the same block for the
+> matcher to see it.
 
 > Note: preset schemas are validated on the Renovate dashboard itself — this
 > repo's CI only checks that all JSON parses, so the regex manager itself is
