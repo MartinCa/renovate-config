@@ -8,7 +8,9 @@
     ":automergeLinters",
     ":semanticCommits"
   ],
-  "assignees": ["MartinCa"],
+  "assignees": [
+    "MartinCa"
+  ],
   "assignAutomerge": true,
   "minimumReleaseAge": "3 days",
   "minimumReleaseAgeBehaviour": "timestamp-optional",
