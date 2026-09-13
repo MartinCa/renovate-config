@@ -55,7 +55,7 @@ verbatim.
 
 Local commits are guarded by `lefthook`, consuming the shared
 [MartinCa/lefthook-configs](https://github.com/MartinCa/lefthook-configs)
-fragments pinned at `v2.0.1` in `lefthook.yml` (a thin `remotes:` config).
+fragments pinned at `v2.1.0` in `lefthook.yml` (a thin `remotes:` config).
 Staged JSON must be jq-canonical (`jq --indent 2 .`), the staged diff is
 secret-scanned with `betterleaks`, staged workflow files are audited with
 `zizmor`, and commit messages must follow Conventional Commits.
