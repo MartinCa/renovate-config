@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+permissions: {}
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  LEFTHOOK_VERSION: "2.1.12"
+
+jobs:
+  zizmor:
+    name: Zizmor
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      security-events: write # upload zizmor's SARIF report to code scanning
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Run zizmor
+        uses: zizmorcore/zizmor-action@cc914d7f3750a2d13d75c7f184a1060aa0e9d482 # v0.6.4
+        with:
+          min-severity: medium
+
+  validate:
+    name: Validate configs
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install lefthook
+        # zizmor: ignore[adhoc-packages] — pinned read-only tool install for
+        # config validation; there is no lockfile to commit for a temp tool.
+        run: npm install -g lefthook@${{ env.LEFTHOOK_VERSION }}
+      - name: Validate this repo's lefthook config
+        run: |
+          lefthook validate
+          echo "lefthook.yml validated"
+      - name: Validate consumed lefthook fragments
+        # lefthook validate does not fetch `remotes:` configs, so validate
+        # each consumed fragment from the pinned ref directly.
+        run: |
+          tmp=$(mktemp -d)
+          git clone --quiet --depth 1 --branch v2.0.0 https://github.com/MartinCa/lefthook-configs "$tmp"
+          for fragment in lefthook-shared.yml commit-msg.yml langs/json.yml; do
+            LEFTHOOK_CONFIG="$tmp/$fragment" lefthook validate
+          done
+          echo "All consumed lefthook fragments validated"
+      - name: JSON syntax check
+        # Renovate validates preset schemas on its own dashboard; a JSON
+        # syntax check is all this repo needs.
+        run: |
+          jq empty apps.json default.json
+          git ls-files '*.json' | xargs -n1 jq empty
+          echo "All JSON files parse OK"
