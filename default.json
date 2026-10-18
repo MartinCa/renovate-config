@@ -12,7 +12,7 @@
   "assignees": [
     "MartinCa"
   ],
-  "assignAutomerge": true,
+  "assignAutomerge": false,
   "minimumReleaseAge": "3 days",
   "minimumReleaseAgeBehaviour": "timestamp-optional",
   "packageRules": [
