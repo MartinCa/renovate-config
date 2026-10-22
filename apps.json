@@ -5,5 +5,20 @@
     "github>MartinCa/frontend-kit:renovate-frontend",
     ":automergeMinor",
     ":automergeTypes"
+  ],
+  "packageRules": [
+    {
+      "description": "A Python minor is breaking in practice (ABI, removed APIs, wheel availability): group the interpreter bumps (Docker images, setup-python) into one PR and never automerge it. Declared after :automergeMinor so it wins.",
+      "matchPackageNames": [
+        "python",
+        "docker.io/library/python"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "major"
+      ],
+      "groupName": "python",
+      "automerge": false
+    }
   ]
 }
