@@ -19,6 +19,15 @@
       ],
       "groupName": "python",
       "automerge": false
+    },
+    {
+      "description": "Group the Node.js runtime (Docker images, setup-node) with @types/node so a bump lands as one PR.",
+      "matchPackageNames": [
+        "node",
+        "docker.io/library/node",
+        "@types/node"
+      ],
+      "groupName": "node"
     }
   ]
 }
