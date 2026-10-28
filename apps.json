@@ -8,9 +8,9 @@
   ],
   "packageRules": [
     {
-      "description": "A Python minor is breaking in practice (ABI, removed APIs, wheel availability): group the interpreter bumps (Docker images, setup-python) into one PR and never automerge it. Declared after :automergeMinor so it wins.",
+      "description": "A Python minor is breaking in practice (ABI, removed APIs, wheel availability): group the interpreter bumps (Docker images, setup-python) into one PR and never automerge it. matchPackageNames matches the packageName: setup-python's python-version is actions/python-versions (its depName is just python), and Docker images are written fully qualified. Declared after :automergeMinor so it wins.",
       "matchPackageNames": [
-        "python",
+        "actions/python-versions",
         "docker.io/library/python"
       ],
       "matchUpdateTypes": [
@@ -21,11 +21,10 @@
       "automerge": false
     },
     {
-      "description": "Group the Node.js runtime (setup-node, Docker images) with @types/node so a bump lands as one PR. matchPackageNames matches the packageName: setup-node's node-version is actions/node-versions (depName node), and a Dockerfile written FROM node:... has packageName node, while docker.io/library/node is the fully qualified spelling.",
+      "description": "Group the Node.js runtime (setup-node, Docker images) with @types/node so a bump lands as one PR. matchPackageNames matches the packageName: setup-node's node-version is actions/node-versions (its depName is just node). Docker images are written fully qualified, so the unqualified `node` is not listed.",
       "matchPackageNames": [
-        "node",
-        "docker.io/library/node",
         "actions/node-versions",
+        "docker.io/library/node",
         "@types/node"
       ],
       "groupName": "node"
