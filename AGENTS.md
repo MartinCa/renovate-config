@@ -46,3 +46,6 @@ pragmatic escape hatch for restricted setups, not a way to dodge the gates.
   `jq --indent 2 . <file> > <file>.tmp && mv <file>.tmp <file>` to fix.
 - CI workflows use SHA-pinned actions with version comments and minimal
   permissions — keep it that way for any new workflow.
+- Docker images in consuming repos are written fully qualified
+  (`docker.io/library/node`, not `node`). `packageRules` match the
+  `packageName`, so the presets list only the qualified spelling.
