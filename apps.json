@@ -21,10 +21,11 @@
       "automerge": false
     },
     {
-      "description": "Group the Node.js runtime (setup-node, Docker images) with @types/node so a bump lands as one PR. matchPackageNames matches the packageName, which for setup-node's node-version is actions/node-versions (its depName is just node).",
+      "description": "Group the Node.js runtime (setup-node, Docker images) with @types/node so a bump lands as one PR. matchPackageNames matches the packageName: setup-node's node-version is actions/node-versions (depName node), and a Dockerfile written FROM node:... has packageName node, while docker.io/library/node is the fully qualified spelling.",
       "matchPackageNames": [
-        "actions/node-versions",
+        "node",
         "docker.io/library/node",
+        "actions/node-versions",
         "@types/node"
       ],
       "groupName": "node"
