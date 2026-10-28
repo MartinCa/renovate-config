@@ -21,9 +21,9 @@
       "automerge": false
     },
     {
-      "description": "Group the Node.js runtime (Docker images, setup-node) with @types/node so a bump lands as one PR.",
+      "description": "Group the Node.js runtime (setup-node, Docker images) with @types/node so a bump lands as one PR. matchPackageNames matches the packageName, which for setup-node's node-version is actions/node-versions (its depName is just node).",
       "matchPackageNames": [
-        "node",
+        "actions/node-versions",
         "docker.io/library/node",
         "@types/node"
       ],
