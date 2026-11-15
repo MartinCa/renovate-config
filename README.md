@@ -56,10 +56,13 @@ verbatim.
 `default.json` sets `minimumReleaseAge: "3 days"` for everything except my own
 packages, which are published and reviewed by me and so are bumped immediately:
 
-- `ghcr.io/martinca/**` — my container images on GHCR
-- `@martinrun/**` — my npm scope (e.g. `@martinrun/frontend-config`)
-- `MartinCa/**` — my GitHub-hosted sources (actions, releases, tags such as
-  `MartinCa/lefthook-configs`)
+Each rule is scoped to a datasource, so a same-named package from another
+ecosystem is not exempted by accident:
+
+- `ghcr.io/martinca/**` (`docker`) — my container images on GHCR
+- `@martinrun/**` (`npm`) — my npm scope (e.g. `@martinrun/frontend-config`)
+- `MartinCa/**` (`github-tags`, `github-releases`) — my GitHub-hosted sources
+  (actions, releases, tags such as `MartinCa/lefthook-configs`)
 
 Docker Hub (`martinc01/*`) is intentionally not listed: nothing consumes those
 images through Renovate, they are only a secondary publish target.
