@@ -29,6 +29,15 @@
         "ghcr.io/astral-sh/uv"
       ],
       "groupName": "uv"
+    },
+    {
+      "description": "Skip the release-age wait for my own packages: I publish and review them myself, so quarantining them only delays a bump I already trust. Covers my container images on GHCR, my npm scope, and my GitHub-hosted sources (actions, releases, tags). Docker Hub is deliberately not listed — consumed images of mine are published to GHCR. Matching is on the packageName and is case-insensitive.",
+      "matchPackageNames": [
+        "ghcr.io/martinca/**",
+        "@martinrun/**",
+        "MartinCa/**"
+      ],
+      "minimumReleaseAge": null
     }
   ],
   "customManagers": [
