@@ -29,6 +29,37 @@
         "ghcr.io/astral-sh/uv"
       ],
       "groupName": "uv"
+    },
+    {
+      "description": "Skip the release-age wait for my own container images on GHCR: I publish and review them myself. Scoped to the docker datasource so a same-named package from another ecosystem is not exempted. Docker Hub is deliberately not listed: consumed images of mine are published to GHCR.",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "ghcr.io/martinca/**"
+      ],
+      "minimumReleaseAge": null
+    },
+    {
+      "description": "Skip the release-age wait for my own npm scope (published and reviewed by me). Scoped to the npm datasource.",
+      "matchDatasources": [
+        "npm"
+      ],
+      "matchPackageNames": [
+        "@martinrun/**"
+      ],
+      "minimumReleaseAge": null
+    },
+    {
+      "description": "Skip the release-age wait for my own GitHub-hosted sources (actions, releases, tags such as MartinCa/lefthook-configs). Scoped to the GitHub datasources so a same-named package elsewhere is not exempted.",
+      "matchDatasources": [
+        "github-tags",
+        "github-releases"
+      ],
+      "matchPackageNames": [
+        "MartinCa/**"
+      ],
+      "minimumReleaseAge": null
     }
   ],
   "customManagers": [
